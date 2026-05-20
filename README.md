@@ -16,6 +16,8 @@ NikVPN XHTTP Installer
 فقط این دستور را داخل ترمینال سرور اوبونتو اجرا کنید:
 
 bash <(curl -fsSL https://raw.githubusercontent.com/nikvpn-iran/NikVPN-xhttp-installer/main/install.sh)
+
+
 ✨ امکانات
 
 🚀 نصب کاملاً خودکار
