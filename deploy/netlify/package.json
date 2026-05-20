@@ -1,11 +1,11 @@
 {
-  "name": "netlify-xhttp-relay",
+  "name": "nikvpn-netlify-relay",
   "version": "1.0.0",
-  "description": "Netlify Edge Function HTTP relay for your own upstream service",
+  "description": "NikVPN Netlify Edge Function relay for VLESS+XHTTP+TLS",
   "private": true,
   "license": "GPL-3.0",
-  "author": "avaco_cloud",
-  "homepage": "https://github.com/avacocloud/XHTTP-Installer",
+  "author": "nikvpn-iran",
+  "homepage": "https://github.com/nikvpn-iran/NikVPN-XHTTP-Installer",
   "scripts": {
     "dev": "netlify dev",
     "build": "echo 'No build step required'"
@@ -13,5 +13,5 @@
   "devDependencies": {
     "netlify-cli": "latest"
   },
-  "buildId": "avc-7f3a92e1-2025-avacocloud"
+  "buildId": "nkv-2026-010-nikvpn"
 }
