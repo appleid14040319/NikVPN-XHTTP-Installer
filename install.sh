@@ -1,5 +1,8 @@
 #!/bin/bash
 # NikVPN XHTTP Installer — Bootstrap
+# Copyright (C) 2026 nikvpn-iran
+# Based on XHTTP-Installer by avacocloud (GPL-3.0)
+# License: GPL-3.0-only
 # Repo: https://github.com/nikvpn-iran/NikVPN-xhttp-installer
 set -e
 
