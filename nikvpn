@@ -1,0 +1,50 @@
+#!/bin/bash
+# NikVPN Management CLI
+STATE_FILE="/etc/nikvpn/state.env"
+if [[ ! -f "$STATE_FILE" ]]; then
+    echo "NikVPN state not found. Run the installer first."
+    exit 1
+fi
+source "$STATE_FILE"
+
+RED='\033[0;31m'; GREEN='\033[0;32m'; CYAN='\033[0;36m'; NC='\033[0m'
+info()  { echo -e "${GREEN}[✔]${NC} $*"; }
+
+show_configs() {
+    echo -e "${CYAN}All NikVPN Configs:${NC}"
+    cat "$STATE_DIR/configs.txt"
+}
+
+show_panel() {
+    echo -e "${CYAN}NikVPN Panel:${NC}"
+    echo "  URL:      https://$DOMAIN:$PANEL_PORT"
+    echo "  Username: $PANEL_USER"
+    echo "  Password: $PANEL_PASS"
+}
+
+show_status() {
+    if systemctl is-active --quiet x-ui; then
+        info "Xray service (x-ui) is active."
+    else
+        echo "Service is not running."
+    fi
+}
+
+restart_service() {
+    systemctl restart x-ui
+    info "Service restarted."
+}
+
+usage() {
+    echo "Usage: nikvpn [configs|panel|status|restart|add|help]"
+}
+
+# Main
+case "$1" in
+    configs|list) show_configs ;;
+    panel)        show_panel ;;
+    status)       show_status ;;
+    restart)      restart_service ;;
+    add)          echo "Use the panel (https://$DOMAIN:$PANEL_PORT) to add new clients." ;;
+    help|*)       usage ;;
+esac
