@@ -1,5 +1,10 @@
 #!/bin/bash
 # NikVPN Management CLI
+# Copyright (C) 2026 nikvpn-iran
+# Based on concept from XHTTP-Installer (avacocloud, GPL-3.0)
+# License: GPL-3.0-only
+# NikVPN build ID: nkv-2026-010-nikvpn
+
 STATE_FILE="/etc/nikvpn/state.env"
 if [[ ! -f "$STATE_FILE" ]]; then
     echo "NikVPN state not found. Run the installer first."
