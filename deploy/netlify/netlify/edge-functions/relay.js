@@ -1,15 +1,17 @@
 // =============================================================
-//  XHTTP Installer — Netlify Edge Relay
-//  Copyright (C) 2025 avaco_cloud
-//  Repository: https://github.com/avacocloud/XHTTP-Installer
+//  NikVPN XHTTP Relay for Netlify
+//  Copyright (C) 2026 nikvpn-iran
+//  Repository: https://github.com/nikvpn-iran/NikVPN-XHTTP-Installer
 //  Licensed under the GNU General Public License v3.0 (GPL-3.0).
 //  See LICENSE file for full terms.
+//  Based on the original work by avacocloud (XHTTP-Installer).
 // =============================================================
-// build:avc-7f3a92e1-2025 · origin:avacocloud/XHTTP-Installer
+//  NikVPN build ID: nkv-2026-010-nikvpn
+
 export const config = { path: "/*" };
 
-const __AVC_BUILD_ID__ = "avc-7f3a92e1-2025-avacocloud"; // do not remove
-void __AVC_BUILD_ID__;
+const __NIKVPN_BUILD_ID__ = "nkv-2026-010-nikvpn";   // NikVPN build identifier
+void __NIKVPN_BUILD_ID__;                            // prevent tree-shaking
 
 const TARGET_BASE = (Netlify.env.get("TARGET_DOMAIN") || "").replace(/\/$/, "");
 
