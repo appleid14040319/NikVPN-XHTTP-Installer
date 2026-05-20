@@ -1,11 +1,12 @@
 // =============================================================
-//  XHTTP Installer — Vercel Build Script
-//  Copyright (C) 2025 avaco_cloud
-//  Repository: https://github.com/avacocloud/XHTTP-Installer
+//  NikVPN XHTTP Installer — Vercel Build Script
+//  Copyright (C) 2026 nikvpn-iran
+//  Repository: https://github.com/nikvpn-iran/NikVPN-XHTTP-Installer
 //  Licensed under the GNU General Public License v3.0 (GPL-3.0).
 //  See LICENSE file for full terms.
+//  Based on the original work by avacocloud (XHTTP-Installer).
 // =============================================================
-// build:avc-7f3a92e1-2025 · origin:avacocloud/XHTTP-Installer
+//  NikVPN build ID: nkv-2026-010-nikvpn
 import {
   copyFile,
   mkdir,
