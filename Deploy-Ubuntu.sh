@@ -30,6 +30,51 @@ if ! grep -qi "ubuntu" /etc/os-release; then
 fi
 
 # ==============================================
+#  SCREEN PERSISTENCE (prevent SSH drop)
+# ==============================================
+if [[ -z "${STY:-}" && -z "${TMUX:-}" ]]; then
+    echo ""
+    echo -e "${YELLOW}⚠ You are NOT inside screen/tmux.${NC}"
+    echo -e "${YELLOW}  If your SSH disconnects, the installation will die mid-way.${NC}"
+    echo -e "${YELLOW}  Recommended: run inside screen so you can reattach later.${NC}"
+    echo ""
+    read -p "  Auto-launch inside screen? [Y/n]: " USE_SCREEN
+    USE_SCREEN=${USE_SCREEN:-y}
+
+    if [[ "$USE_SCREEN" =~ ^[Yy] ]]; then
+        if ! command -v screen &>/dev/null; then
+            apt-get update -qq && apt-get install -y -qq screen
+        fi
+
+        SESSION_NAME="nikvpn"
+        SCRIPT_PATH=$(realpath "$0")
+
+        if screen -list | grep -q "\.${SESSION_NAME}\s"; then
+            echo ""
+            echo -e "  ${YELLOW}⚠ Existing screen session '${SESSION_NAME}' found.${NC}"
+            echo "  1) Reattach to it     (continue what was running)"
+            echo "  2) Kill it & start fresh"
+            echo "  3) Cancel"
+            read -p "  Choose [1/2/3]: " RESUME_CHOICE
+            case "$RESUME_CHOICE" in
+                1)
+                    exec screen -r "$SESSION_NAME"
+                    ;;
+                2)
+                    screen -S "$SESSION_NAME" -X quit
+                    exec screen -S "$SESSION_NAME" bash "$SCRIPT_PATH"
+                    ;;
+                *)
+                    err "Installation cancelled."
+                    ;;
+            esac
+        else
+            exec screen -S "$SESSION_NAME" bash "$SCRIPT_PATH"
+        fi
+    fi
+fi
+
+# ==============================================
 #  BANNER & PLATFORM SELECTION
 # ==============================================
 clear
@@ -77,7 +122,6 @@ fi
 info "Platform: $PLATFORM"
 echo ""
 read -p "  Press Enter to start installation..."
-
 
 # ==============================================
 # PHASE 1 – System update & base packages
@@ -182,18 +226,7 @@ for ((i=0; i<NUM_CONFIGS; i++)); do
 done
 info "Generated ${#UUIDS[@]} UUID(s)."
 
-# Relay platform
-echo -e "\n  [ Deployment Platform ]"
-echo "  1) Vercel"
-echo "  2) Netlify"
-read -p "  Enter choice [1/2]: " PLATFORM
-if [[ "$PLATFORM" != "1" && "$PLATFORM" != "2" ]]; then
-    err "Invalid platform choice."
-fi
-if [[ "$PLATFORM" == "1" ]]; then PLATFORM="vercel"; else PLATFORM="netlify"; fi
-info "Platform: $PLATFORM"
-
-# Relay paths & performance settings
+# ── Relay paths & performance settings (platform already selected above) ──
 read -p "RELAY_PATH (inbound path, e.g. /api) [/api]: " RELAY_PATH
 RELAY_PATH=${RELAY_PATH:-/api}
 read -p "PUBLIC_RELAY_PATH (public path) [/api]: " PUBLIC_RELAY_PATH
