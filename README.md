@@ -100,14 +100,15 @@ Netlify Personal Access Tokens
 1️⃣ انتخاب پلتفرم
 
 بین این دو انتخاب کنید:
-...bash
+
+```bash
 1) Vercel
 2) Netlify
-...
+```
 پیشنهاد:
-...bash
+```bash
 ✅ Vercel
-...
+```
 2️⃣ وارد کردن دامنه
 
 مثال:
