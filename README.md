@@ -12,12 +12,17 @@ NikVPN XHTTP Installer
 
 </div>
 ⚡ نصب سریع (Easy Install)
-...bash
+
 فقط این دستور را داخل ترمینال سرور اوبونتو اجرا کنید:
 
 bash <(curl -fsSL https://raw.githubusercontent.com/nikvpn-iran/NikVPN-xhttp-installer/main/install.sh)
 
 
+برای نصب روی اوبونتو، دستور زیر رو اجرا کن:
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/nikvpn-iran/NikVPN-xhttp-installer/main/install.sh)
+```
 ✨ امکانات
 
 🚀 نصب کاملاً خودکار
