@@ -25,13 +25,59 @@ SSL_BASE="/etc/ssl/xhttp"
 
 # --- Preflight checks ---
 [[ $EUID -ne 0 ]] && err "This script must be run as root."
-
 if ! grep -qi "ubuntu" /etc/os-release; then
     err "This installer supports Ubuntu 20.04+ only."
 fi
 
-info "NikVPN XHTTP Installer – Advanced Setup"
-info "----------------------------------------"
+# ==============================================
+#  BANNER & PLATFORM SELECTION
+# ==============================================
+clear
+cat <<'BANNER'
+   ███╗   ██╗██╗██╗  ██╗██╗   ██╗██████╗ ███╗   ██╗
+   ████╗  ██║██║██║ ██╔╝██║   ██║██╔══██╗████╗  ██║
+   ██╔██╗ ██║██║█████╔╝ ██║   ██║██████╔╝██╔██╗ ██║
+   ██║╚██╗██║██║██╔═██╗ ╚██╗ ██╔╝██╔═══╝ ██║╚██╗██║
+   ██║ ╚████║██║██║  ██╗ ╚████╔╝ ██║     ██║ ╚████║
+   ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝     ╚═╝  ╚═══╝
+
+   ██╗███╗   ██╗███████╗████████╗ █████╗ ██╗     ██╗     ███████╗██████╗
+   ██║████╗  ██║██╔════╝╚══██╔══╝██╔══██╗██║     ██║     ██╔════╝██╔══██╗
+   ██║██╔██╗ ██║███████╗   ██║   ███████║██║     ██║     █████╗  ██████╔╝
+   ██║██║╚██╗██║╚════██║   ██║   ██╔══██║██║     ██║     ██╔══╝  ██╔══██╗
+   ██║██║ ╚████║███████║   ██║   ██║  ██║███████╗███████╗███████╗██║  ██║
+   ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝
+
+          ★  N I K V P N   I N S T A L L E R  ★
+          ─────────────────────────────────
+          VLESS + XHTTP + TLS
+          Ubuntu Auto-Installer
+          Relay: Vercel / Netlify
+          github.com/nikvpn-iran/NikVPN-xhttp-installer
+
+  Important: Make sure your domain DNS A-record points to this server IP before continuing.
+  Tip: Press Ctrl+C at any time to abort.
+
+BANNER
+
+echo "  [ Deployment Platform ]"
+echo "  Choose relay platform:"
+echo "    1) Vercel"
+echo "    2) Netlify"
+read -p "  Enter choice [1/2]: " PLATFORM_CHOICE
+
+if [[ "$PLATFORM_CHOICE" == "1" ]]; then
+    PLATFORM="vercel"
+elif [[ "$PLATFORM_CHOICE" == "2" ]]; then
+    PLATFORM="netlify"
+else
+    err "Invalid choice. Run the script again."
+fi
+
+info "Platform: $PLATFORM"
+echo ""
+read -p "  Press Enter to start installation..."
+
 
 # ==============================================
 # PHASE 1 – System update & base packages
