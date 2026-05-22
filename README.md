@@ -12,12 +12,6 @@ NikVPN XHTTP Installer
 
 </div>
 ⚡ نصب سریع (Easy Install)
-
-فقط این دستور را داخل ترمینال سرور اوبونتو اجرا کنید:
-
-bash <(curl -fsSL https://raw.githubusercontent.com/nikvpn-iran/NikVPN-xhttp-installer/main/install.sh)
-
-
 برای نصب روی اوبونتو، دستور زیر رو اجرا کن:
 
 ```bash
@@ -106,38 +100,39 @@ Netlify Personal Access Tokens
 1️⃣ انتخاب پلتفرم
 
 بین این دو انتخاب کنید:
-
+...bash
 1) Vercel
 2) Netlify
-
+...
 پیشنهاد:
-
+...bash
 ✅ Vercel
-
+...
 2️⃣ وارد کردن دامنه
 
 مثال:
-
+...bash
 vpn.example.com
+...
 3️⃣ وارد کردن ایمیل
 
 مثال:
-
+...bash
 admin@example.com
+...
 4️⃣ تعداد کانفیگ‌ها
 
 مثال:
-
+...bash
 5
-
+...
 یعنی ۵ کانفیگ مختلف ساخته می‌شود.
 
 5️⃣ حجم هر کاربر
-
+...bash
 مثال:
 
 10
-
 یعنی:
 
 10 گیگ برای هر کاربر
@@ -145,6 +140,7 @@ admin@example.com
 برای حجم نامحدود:
 
 0
+...
 6️⃣ مسیر و پورت
 
 اگر نمی‌دانید چیست فقط:
