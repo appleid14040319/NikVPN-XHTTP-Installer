@@ -65,35 +65,35 @@ bash <(curl -fsSL https://raw.githubusercontent.com/nikvpn-iran/NikVPN-xhttp-ins
 قبل از اجرای اسکریپت:
 
 یک رکورد A بسازید:
-
+```bash
 Type	Name	Value
 A	@ یا subdomain	IP سرور
-
+```
 مثال:
-
+```bash
 vpn.example.com -> 1.2.3.4
-
+```
 برای تست:
-
+```bash
 ping yourdomain.com
-
+```
 اگر IP سرور نمایش داده شد یعنی DNS درست تنظیم شده.
 
 🔑 دریافت توکن‌ها
 توکن Vercel
 
 از این صفحه:
-
+```bash
 Vercel Token Settings
-
+```
 یک Token جدید بسازید.
 
 توکن Netlify
 
 از این صفحه:
-
+```bash
 Netlify Personal Access Tokens
-
+```
 یک Personal Access Token ایجاد کنید.
 
 🚀 آموزش نصب مرحله‌به‌مرحله
@@ -112,25 +112,25 @@ Netlify Personal Access Tokens
 2️⃣ وارد کردن دامنه
 
 مثال:
-...bash
+```bash
 vpn.example.com
-...
+```
 3️⃣ وارد کردن ایمیل
 
 مثال:
-...bash
+```bash
 admin@example.com
-...
+```
 4️⃣ تعداد کانفیگ‌ها
 
 مثال:
-...bash
+```bash
 5
-...
+```
 یعنی ۵ کانفیگ مختلف ساخته می‌شود.
 
 5️⃣ حجم هر کاربر
-...bash
+```bash
 مثال:
 
 10
@@ -141,7 +141,7 @@ admin@example.com
 برای حجم نامحدود:
 
 0
-...
+```
 6️⃣ مسیر و پورت
 
 اگر نمی‌دانید چیست فقط:
@@ -157,10 +157,10 @@ Enter
 8️⃣ نصب پنل
 
 پیشنهاد:
-
+```bash
 YES
-
-تا پنل 3X-UI نصب شود.
+```
+تا پنل hiddify نصب شود.
 
 📦 خروجی نهایی
 
@@ -177,14 +177,15 @@ YES
 ✅ نتیجه تست اتصال
 
 نمونه لینک:
-
+```bash
 vless://uuid@relay.vercel.app:443?security=tls&type=xhttp...
+```
 🖥️ پنل مدیریت
 
 آدرس پنل:
-
+```bash
 https://yourdomain.com:2053
-
+```
 امکانات:
 
 مدیریت کاربران
@@ -204,26 +205,32 @@ https://yourdomain.com:2053
 بعد از نصب دستور nikvpn فعال می‌شود.
 
 دستورات:
+
+```bash
 nikvpn configs
 nikvpn panel
 nikvpn status
 nikvpn restart
 nikvpn logs
 nikvpn help
+```
 📂 فایل‌های مهم
 مسیر	توضیح
+```bash
 /etc/nikvpn/configs.txt	لینک کانفیگ‌ها
 /etc/nikvpn/state.env	اطلاعات نصب
 /usr/local/bin/nikvpn	ابزار مدیریت
 /tmp/nikvpn-install.log	لاگ نصب
+```
 🔥 تنظیم فایروال
 
 اگر فایروال فعال است:
-
+```bash
 ufw allow 80/tcp
 ufw allow 443/tcp
 ufw allow 2053/tcp
 ufw reload
+```
 ⚠️ نکات مهم
 کاربران Vercel
 
